@@ -43,6 +43,7 @@ final class MockNetWork: NetworkServiceType {
     func request(
         completion: @escaping (Result<[MockModel], RxPlungerError>) -> Void
     ) {
+        // TODO: RxSwift로 구현해볼까?
         DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in
             guard let self = self else {
                 completion(.failure(RxPlungerError.custom("언래핑 실패")))

@@ -28,6 +28,7 @@ final class HomeReactor: Reactor {
         var models: [MockModel]? = nil
         var isLiked: Bool = false
         
+        // TODO: Pulse가 무엇일까?
         @Pulse var detailViewPublisher: MockModel?
         @Pulse var alertErrorMessage: RxPlungerError?
     }
@@ -35,6 +36,7 @@ final class HomeReactor: Reactor {
     let initialState = State()
     let disposeBag = DisposeBag() // TODO: DisposeBag의 역할은 무엇일까?
     private let networkService: NetworkServiceType
+//    let testPublisher = PublishRelay<MockModel>() // TODO: Pulse로 화면 전환할 때와 무엇이 다를까?
     
     // TODO: Reactor가 초기화되는 시점에 network 객체를 넣어주는 이유가 무엇일까?
     init(
@@ -78,7 +80,7 @@ final class HomeReactor: Reactor {
                 case .success(let models):
                     observer.onNext(Mutation.fetchModels(models))
                 case .failure(let error):
-                    observer.onNext(Mutation.showErrorAlert(error: error))
+                    observer.onNext(Mutation.showErrorAlert(error: error)) // 에러 미구현 - 에러날일이없게 구현되어있습니다.
                 }
             }
             return Disposables.create()

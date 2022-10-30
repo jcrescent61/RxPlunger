@@ -96,6 +96,7 @@ final class DetailView: UIView {
     }
 }
 
+// TODO: 이부분의 역할은 무엇일까? OOP 관점에서도 생각해보자.
 extension Reactive where Base: DetailView {
     var tapBackButton: ControlEvent<Void> {
         return base.backButton.rx.tap

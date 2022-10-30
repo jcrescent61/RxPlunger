@@ -40,6 +40,7 @@ final class HomeTableViewController: UITableViewController, View {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
+        //Bind State
         reactor.pulse(\.$detailViewPublisher)
             .compactMap { $0 }
             .subscribe(onNext: { [weak self] (model: MockModel) in
@@ -50,7 +51,16 @@ final class HomeTableViewController: UITableViewController, View {
             })
             .disposed(by: self.disposeBag)
         
-        //Bind State
+//        reactor.testPublisher
+//            .asDriver(onErrorJustReturn: .init("", description: ""))
+//            .drive(onNext: { [weak self] in
+//                self?.navigationController?.pushViewController(
+//                    DetailViewController.instance(model: $0),
+//                    animated: true
+//                )
+//            })
+//            .disposed(by: self.disposeBag)
+        
         reactor.state
             .map { $0.models ?? [] }
             .asDriver(onErrorJustReturn: [])
