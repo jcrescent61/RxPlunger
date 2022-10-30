@@ -36,7 +36,7 @@ final class HomeReactor: Reactor {
     let initialState = State()
     let disposeBag = DisposeBag() // TODO: DisposeBag의 역할은 무엇일까?
     private let networkService: NetworkServiceType
-//    let testPublisher = PublishRelay<MockModel>() // TODO: Pulse로 화면 전환할 때와 무엇이 다를까?
+    //    let testPublisher = PublishRelay<MockModel>() // TODO: Pulse로 화면 전환할 때와 무엇이 다를까?
     
     // TODO: Reactor가 초기화되는 시점에 network 객체를 넣어주는 이유가 무엇일까?
     init(
@@ -74,16 +74,16 @@ final class HomeReactor: Reactor {
     
     // TODO: Observable<Mutation>을 반환하는 함수를 따로 구현한 이유는 무엇일까?
     private func fetchModels() -> Observable<Mutation> {
-        return .create { [weak self] observer in
-            self?.networkService.request { result in
+        return self.networkService.request()
+            .asObservable()
+            .map { result in
                 switch result {
                 case .success(let models):
-                    observer.onNext(Mutation.fetchModels(models))
+                    return Mutation.fetchModels(models)
                 case .failure(let error):
-                    observer.onNext(Mutation.showErrorAlert(error: error)) // 에러 미구현 - 에러날일이없게 구현되어있습니다.
+                    return Mutation.showErrorAlert(error: error)
                 }
-            }
-            return Disposables.create()
-        }
+            }.delay(.seconds(3), scheduler: MainScheduler.instance)
     }
 }
+

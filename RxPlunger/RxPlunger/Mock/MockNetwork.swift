@@ -7,9 +7,11 @@
 
 import Foundation
 
+import RxSwift
+
 // TODO: NetworkServiceType으로 네트워크 객체를 추상화한 이유는 무엇일까?
 protocol NetworkServiceType {
-    func request(completion: @escaping (Result<[MockModel], RxPlungerError>) -> Void)
+    func request() -> Single<Result<[MockModel], RxPlungerError>>
 }
 
 // 모 프로젝트 스포일러가 될 수 있어서 가짜 네트워킹 객체를 만들었습니다.
@@ -40,16 +42,16 @@ final class MockNetWork: NetworkServiceType {
         ]
     }
     
-    func request(
-        completion: @escaping (Result<[MockModel], RxPlungerError>) -> Void
-    ) {
-        // TODO: RxSwift로 구현해볼까?
-        DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in
+    func request() -> Single<Result<[MockModel], RxPlungerError>> {
+        return Single<Result<[MockModel], RxPlungerError>>.create { [weak self] single in
             guard let self = self else {
-                completion(.failure(RxPlungerError.custom("언래핑 실패")))
-                return
+                single(.success(.failure(RxPlungerError.custom("언래핑 실패"))))
+                return Disposables.create()
             }
-            completion(.success(self.models))
+            
+            single(.success(.success(self.models)))
+            
+            return Disposables.create()
         }
     }
 }
