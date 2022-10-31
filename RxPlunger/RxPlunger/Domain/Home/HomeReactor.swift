@@ -26,7 +26,6 @@ final class HomeReactor: Reactor {
     // TODO: []이 아니라 [MockModel]? 타입으로 선언한 이유는 무엇일까?
     struct State {
         var models: [MockModel]? = nil
-        var isLiked: Bool = false
         
         // TODO: Pulse가 무엇일까?
         @Pulse var detailViewPublisher: MockModel?
