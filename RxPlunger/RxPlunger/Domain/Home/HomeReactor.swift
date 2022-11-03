@@ -33,7 +33,6 @@ final class HomeReactor: Reactor {
     }
     
     let initialState = State()
-    let disposeBag = DisposeBag() // TODO: DisposeBag의 역할은 무엇일까?
     private let networkService: NetworkServiceType
     //    let testPublisher = PublishRelay<MockModel>() // TODO: Pulse로 화면 전환할 때와 무엇이 다를까?
     

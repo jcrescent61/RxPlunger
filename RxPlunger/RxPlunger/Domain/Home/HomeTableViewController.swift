@@ -13,7 +13,7 @@ import RxCocoa
 
 final class HomeTableViewController: UITableViewController, View {
     private let homeView = HomeView()
-    var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag() // TODO: DisposeBag의 역할은 무엇일까?
     private let homeReactor = HomeReactor(networkService: MockNetWork())
     
     static func instance() -> HomeTableViewController {
