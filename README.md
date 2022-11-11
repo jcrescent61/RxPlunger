@@ -1,6 +1,8 @@
 # RxPlunger
+iOS 부트캠프 야곰아카데미 에듀콘 발표자료 꽉막힌 RxSwift? ReactorKit으로 시원하게 뚫어드립니다!의 예제 프로젝트입니다.
 
-## 답답한 RxSwift? ReactorKit으로 시원하게 뚫어드립니다!
+
+### 앱 미리보기
 ![Simulator Screen Recording - iPhone 11 Pro - 2022-11-01 at 10 08 29](https://user-images.githubusercontent.com/80380535/199137029-52686ba9-5a28-4c99-a3c6-c103544a7af9.gif) ![asd](https://user-images.githubusercontent.com/80380535/199137587-cc048fe4-d416-4686-ae4b-ddf260be26a5.gif)
 
 
