@@ -8,6 +8,7 @@ iOS 부트캠프 야곰아카데미 에듀콘 발표자료 꽉막힌 RxSwift? Re
 
 
 ### 야아 에듀콘 발표용 예제 프로젝트
+- [꽉막힌 RxSwift? ReactorKit으로 시원하게 뚫어드립니다! 발표자료 보러가기](https://drive.google.com/drive/folders/1lVrjxanwPguSTU511e8T9kVmuE1jAhrk?usp=sharing)
 - 프로젝트 TODO 항목들을 확인해보고 스스로 공부해보세요!
 - 질문 사항은 jcrescent61@gmail.com으로 보내주세요!
 
